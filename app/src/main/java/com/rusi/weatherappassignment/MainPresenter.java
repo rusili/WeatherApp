@@ -18,7 +18,7 @@ public class MainPresenter {
 		aerisRetrofit.setRetrofitListener(retrofitListener = new AerisRetrofit.RetrofitListener() {
 			@Override
 			public void onForecastsRetrieved (ResponseAeris jsonObject) {
-				fragmentWeek.updateUI();
+				fragmentWeek.updateUI(jsonObject);
 			}
 		});
 		aerisRetrofit.getAerisResponse(CONSTANTS.AERIS_WEATHER.CLIENT_ID, CONSTANTS.AERIS_WEATHER.SECRET_ID);
