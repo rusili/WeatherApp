@@ -1,6 +1,7 @@
 package com.rusi.weatherappassignment.utility;
 
 public class CONSTANTS {
+	public static boolean celsius;
 
 	public interface AERIS_WEATHER{
 		String BASE_URL = "http://api.aerisapi.com/";
@@ -8,5 +9,7 @@ public class CONSTANTS {
 		String SECRET_ID = "W7iaE43wwZqeUee5QaQEgKXO6CpoQMAxBcEoViI6";
 	}
 
-
+	public interface SYMBOLS {
+		public static String DEGREE = "\u00b0";
+	}
 }

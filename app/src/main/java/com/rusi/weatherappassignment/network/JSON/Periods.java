@@ -5,7 +5,7 @@ public class Periods {
 
 	private int maxTempC;
 	private int minTempC;
-	private int MaxTempF;
+	private int maxTempF;
 	private int minTempF;
 
 	private String icon;
@@ -23,7 +23,7 @@ public class Periods {
 	}
 
 	public int getMaxTempF () {
-		return MaxTempF;
+		return maxTempF;
 	}
 
 	public int getMinTempF () {

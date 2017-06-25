@@ -1,5 +1,7 @@
 package com.rusi.weatherappassignment.utility;
 
+import android.widget.ImageView;
+
 public class IconHelper {
 	private static IconHelper iconHelper;
 
@@ -12,7 +14,7 @@ public class IconHelper {
 		return  iconHelper;
 	}
 
-	public void chooseIcon(String icon){
+	public void chooseIcon (String icon, ImageView imageViewIcon){
 
 	}
 }

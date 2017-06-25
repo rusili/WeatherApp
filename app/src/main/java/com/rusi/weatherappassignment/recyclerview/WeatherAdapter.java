@@ -8,19 +8,23 @@ import android.view.ViewGroup;
 import com.rusi.weatherappassignment.R;
 import com.rusi.weatherappassignment.network.JSON.Periods;
 import com.rusi.weatherappassignment.network.JSON.ResponseAeris;
+import com.rusi.weatherappassignment.utility.IconHelper;
 
 public class WeatherAdapter extends RecyclerView.Adapter {
 	Periods[] periodsArray = new Periods[7];
 
+	private IconHelper iconHelper;
+
 	public WeatherAdapter (ResponseAeris jsonObject) {
 		this.periodsArray = jsonObject.getResponse()[0].getPeriods();
+		iconHelper = IconHelper.getInstance();
 	}
 
 	@Override
 	public RecyclerView.ViewHolder onCreateViewHolder (ViewGroup parent, int viewType) {
 		LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
 		View view = layoutInflater.inflate(R.layout.weekday_viewholder, parent, false);
-		WeekdayViewholder weekdayViewholder = new WeekdayViewholder(view);
+		WeekdayViewholder weekdayViewholder = new WeekdayViewholder(view, iconHelper);
 
 		return weekdayViewholder;
 	}
