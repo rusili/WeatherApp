@@ -1,12 +1,10 @@
 package com.rusi.weatherappassignment.recyclerview;
 
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.rusi.weatherappassignment.R;
 import com.rusi.weatherappassignment.network.JSON.Periods;
 import com.rusi.weatherappassignment.utility.CONSTANTS;
@@ -37,28 +35,21 @@ public class WeekdayViewholder extends RecyclerView.ViewHolder {
 	}
 
 	public void bind (Periods periods) {
-		textViewDate.setText(periods.getValidTime());
+		String maxTemp;
+		String minTemp;
+
+		textViewDate.setText(periods.getValidTime().substring(0, 10));
+
 		if (CONSTANTS.celsius){
-			textViewHighTemp.setText(String.valueOf(periods.getMaxTempC()) + CONSTANTS.SYMBOLS.DEGREE);
-			textViewLowTemp.setText(String.valueOf(periods.getMinTempC()) + CONSTANTS.SYMBOLS.DEGREE);
+			maxTemp = periods.getMaxTempC() + CONSTANTS.SYMBOLS.DEGREE + "C";
+			minTemp = periods.getMinTempC() + CONSTANTS.SYMBOLS.DEGREE + "C";
 		} else {
-			textViewHighTemp.setText(String.valueOf(periods.getMaxTempF()) + CONSTANTS.SYMBOLS.DEGREE);
-			textViewLowTemp.setText(String.valueOf(periods.getMinTempF()) + CONSTANTS.SYMBOLS.DEGREE);
+			maxTemp = periods.getMaxTempF() + CONSTANTS.SYMBOLS.DEGREE + "F";
+			minTemp = periods.getMinTempF() + CONSTANTS.SYMBOLS.DEGREE + "F";
 		}
+		textViewHighTemp.setText("High: " + maxTemp);
+		textViewLowTemp.setText("Low: " + minTemp);
 
-		displayIcon(periods);
-	}
-
-	private void displayIcon (Periods periods) {
-		String imageName = periods.getIcon();
-		Log.d("icon: ", imageName);
-		int resID = view.getContext().getResources().getIdentifier(imageName, "drawable", view.getContext().getPackageName());
-		Log.d("iconID: ", String.valueOf(resID));
-
-		Glide.with(view.getContext())
-			  .load(resID)
-			  .fitCenter()
-			  .placeholder(R.drawable.ic_loop_black_24dp)
-			  .into(imageViewIcon);
+		iconHelper.chooseIcon(periods.getIcon(), imageViewIcon);
 	}
 }

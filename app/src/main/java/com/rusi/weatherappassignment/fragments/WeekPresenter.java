@@ -1,15 +1,15 @@
-package com.rusi.weatherappassignment;
+package com.rusi.weatherappassignment.fragments;
 
 import com.rusi.weatherappassignment.network.AerisRetrofit;
 import com.rusi.weatherappassignment.network.JSON.ResponseAeris;
 import com.rusi.weatherappassignment.utility.CONSTANTS;
 
-public class MainPresenter {
+public class WeekPresenter {
 	private final FragmentWeek fragmentWeek;
 	private static AerisRetrofit aerisRetrofit;
 	private AerisRetrofit.RetrofitListener retrofitListener;
 
-	public MainPresenter(FragmentWeek fragmentWeek){
+	public WeekPresenter (FragmentWeek fragmentWeek){
 		this.fragmentWeek = fragmentWeek;
 	}
 

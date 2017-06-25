@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="100dp"
-    android:layout_height="150dp"
+    android:layout_width="@dimen/viewholder_width"
+    android:layout_height="@dimen/recyclerview_height"
+    android:background="@color/White"
+    android:layout_margin="@dimen/cardview_outside_margin"
     >
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="8dp"
+        android:layout_margin="@dimen/cardview_inside_margin"
         >
 
         <TextView
@@ -17,7 +19,8 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="20"
-            android:background="@color/colorAccent"
+            android:textSize="@dimen/fontsize_date"
+            android:gravity="center"
             />
 
         <ImageView
@@ -32,6 +35,8 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="20"
+            android:gravity="center_horizontal"
+            android:textSize="@dimen/fontsize_temp"
             />
 
         <TextView
@@ -39,6 +44,8 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="20"
+            android:gravity="center_horizontal"
+            android:textSize="@dimen/fontsize_temp"
             />
 
 

@@ -1,7 +1,10 @@
-package com.rusi.weatherappassignment;
+package com.rusi.weatherappassignment.activities;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+
+import com.rusi.weatherappassignment.fragments.FragmentWeek;
+import com.rusi.weatherappassignment.R;
 
 public class ActivityMain extends AppCompatActivity {
 	private int containerID;

@@ -1,4 +1,4 @@
-package com.rusi.weatherappassignment;
+package com.rusi.weatherappassignment.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -10,13 +10,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.rusi.weatherappassignment.R;
 import com.rusi.weatherappassignment.network.JSON.ResponseAeris;
 import com.rusi.weatherappassignment.recyclerview.WeatherAdapter;
 import com.rusi.weatherappassignment.utility.CONSTANTS;
 import com.rusi.weatherappassignment.utility.IconHelper;
 
 public class FragmentWeek extends Fragment {
-	private MainPresenter mainPresenter;
+	private WeekPresenter weekPresenter;
 	private IconHelper iconHelper;
 
 	private View view;
@@ -34,7 +35,7 @@ public class FragmentWeek extends Fragment {
 	}
 
 	private void initialize () {
-		mainPresenter = new MainPresenter(this);
+		weekPresenter = new WeekPresenter(this);
 		iconHelper = IconHelper.getInstance();
 		setViews();
 		setOnClickListeners();
@@ -46,8 +47,10 @@ public class FragmentWeek extends Fragment {
 			public void onClick (View v) {
 				if (CONSTANTS.celsius){
 					CONSTANTS.celsius = false;
+					buttonChangeSystem.setText("Show Celsius");
 				} else {
 					CONSTANTS.celsius = true;
+					buttonChangeSystem.setText("Show Fahrenheit");
 				}
 				updateUI(jsonObject);
 			}
@@ -65,7 +68,7 @@ public class FragmentWeek extends Fragment {
 	}
 
 	private void makeNetworkCall () {
-		mainPresenter.makeNetworkCall();
+		weekPresenter.makeNetworkCall();
 	}
 
 	public void updateUI (ResponseAeris jsonObject) {
