@@ -13,7 +13,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class AerisRetrofit {
 	private static AerisRetrofit aerisRetrofit;
 	private retrofit2.Retrofit retrofit;
-
+	private RetrofitListener listener;
 
 	private  AerisRetrofit(){}
 
@@ -22,6 +22,10 @@ public class AerisRetrofit {
 			aerisRetrofit = new AerisRetrofit();
 		}
 		return aerisRetrofit;
+	}
+
+	public void setRetrofitListener (RetrofitListener retrofitListener) {
+		this.listener = retrofitListener;
 	}
 
 	private AerisInterface connect () {
@@ -45,6 +49,10 @@ public class AerisRetrofit {
 			public void onResponse (Call <ResponseAeris> call, Response<ResponseAeris> response) {
 				ResponseAeris jsonResponse = response.body();
 				Log.d("URL: ", call.request().url().toString());
+
+				if (listener != null) {
+					listener.onForecastsRetrieved(jsonResponse);
+				}
 			}
 
 			@Override
@@ -52,5 +60,9 @@ public class AerisRetrofit {
 				Log.d("onFailure: ", t.toString());
 			}
 		});
+	}
+
+	public interface RetrofitListener {
+		public void onForecastsRetrieved (ResponseAeris jsonObject);
 	}
 }
